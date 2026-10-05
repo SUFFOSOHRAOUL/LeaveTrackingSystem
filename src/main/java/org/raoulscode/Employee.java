@@ -1,4 +1,10 @@
 package org.raoulscode;
+import java.util.ArrayLIst;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
+
 
 public class Employee {
     private int employeeeId;
@@ -16,6 +22,27 @@ public class Employee {
         this.email = email;
         this.age= age;
     }
+
+    private ArrayList<LeaveRequest> leaveHistory = new ArrayList<>();
+
+    public void addLeaveRequest(LeaveRequest request){
+        leaveHistory.add(request);
+    }
+
+    public ArrayList<LeaveRequest> getLeaveHistory(){
+        return leaveHistory;
+    }
+
+    public LeaveRequest getLeaveRequestByID(int requestId){
+        for(LeaveRequest request :leaveHistory){
+            if(request.getRequestId() ==requestId){
+                return request;
+            }
+        }
+        return null;
+    }
+
+
 
     public int getEmployeeeId() {
         return employeeeId;
@@ -68,4 +95,5 @@ public class Employee {
             System.out.println("Leave balance cannot be negative.");
         }
     }
+
 }
